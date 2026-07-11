@@ -1,5 +1,5 @@
 /* ===========================================================
-   A-Numerics — stylesheet
+   Math Hub — stylesheet
    Theme: chalkboard + worksheet. Dark chalkboard for hero/nav
    accents, warm paper for reading surfaces, mono type for
    every number a user actually solves for.
@@ -697,7 +697,7 @@ footer.site-footer a:hover { text-decoration: underline; }
   50%      { transform: translateY(-22px) rotate(6deg); opacity: 0.75; }
 }
 
-/* Orbiting rings — a compass/graph motif */
+/* Orbiting rings — a compass/graph motif standing in for the old moon */
 .orbit-core {
   position: absolute;
   left: 50%;
@@ -762,7 +762,7 @@ footer.site-footer a:hover { text-decoration: underline; }
   position: absolute;
   bottom: 34px;
   left: 50%;
-  transform: translateX(-50%);
+  tranhsform: translateX(-50%);
   z-index: 10;
   display: inline-flex;
   align-items: center;
@@ -770,5 +770,4 @@ footer.site-footer a:hover { text-decoration: underline; }
   text-decoration: none;
   color: var(--chalk, #f2efe6);
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transfor
+  letter-spaci
