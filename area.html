@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Area Calculators — Math Hub</title>
+<meta name="description" content="Calculate area for rectangles, squares, triangles, circles, parallelograms, and trapezoids.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <svg class="logo-mark" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <circle cx="15" cy="15" r="11" stroke="#e7bd5c" stroke-width="2"/>
+        <line x1="15" y1="15" x2="24" y2="15" stroke="#5f9d90" stroke-width="2"/>
+        <circle cx="15" cy="15" r="2" fill="#f2efe6"/>
+      </svg>
+      <span>Math Hub<span class="logo-tagline">We Learn · We Solve · We Win</span></span>
+    </a>
+    <nav class="mainnav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="diameter.html">Diameter</a></li>
+        <li><a href="area.html" aria-current="page">Area</a></li>
+        <li><a href="volume.html">Volume</a></li>
+        <li><a href="perimeter.html">Perimeter</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="banner">
+    <div class="equation-ghost">A = l × w</div>
+    <div class="wrap banner-inner">
+      <span class="eyebrow">● Page 03</span>
+      <h1>Area <span class="chalk-underline">Calculators
+        <svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2 8 C 50 14, 150 2, 198 9" stroke="#e7bd5c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span></h1>
+      <p class="lede">Six shapes, six formulas. Enter your measurements and Math Hub does the arithmetic.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="calc-grid">
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Rectangle</h3>
+          <span class="calc-formula">A = l × w</span>
+          <div class="calc-fields">
+            <div class="field"><label for="rect-area-l">Length</label><input type="number" id="rect-area-l" step="any" placeholder="e.g. 8"></div>
+            <div class="field"><label for="rect-area-w">Width</label><input type="number" id="rect-area-w" step="any" placeholder="e.g. 4"></div>
+          </div>
+          <button class="calc-solve" id="rect-area-solve">Solve</button>
+          <div class="calc-output" id="rect-area-output">Result will appear here.</div>
+        </div>
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Square</h3>
+          <span class="calc-formula">A = s²</span>
+          <div class="calc-fields">
+            <div class="field"><label for="square-area-s">Side</label><input type="number" id="square-area-s" step="any" placeholder="e.g. 6"></div>
+          </div>
+          <button class="calc-solve" id="square-area-solve">Solve</button>
+          <div class="calc-output" id="square-area-output">Result will appear here.</div>
+        </div>
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Triangle</h3>
+          <span class="calc-formula">A = ½ × b × h</span>
+          <div class="calc-fields">
+            <div class="field"><label for="triangle-area-b">Base</label><input type="number" id="triangle-area-b" step="any" placeholder="e.g. 10"></div>
+            <div class="field"><label for="triangle-area-h">Height</label><input type="number" id="triangle-area-h" step="any" placeholder="e.g. 6"></div>
+          </div>
+          <button class="calc-solve" id="triangle-area-solve">Solve</button>
+          <div class="calc-output" id="triangle-area-output">Result will appear here.</div>
+        </div>
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Circle</h3>
+          <span class="calc-formula">A = πr²</span>
+          <div class="calc-fields">
+            <div class="field"><label for="circle-area-r">Radius</label><input type="number" id="circle-area-r" step="any" placeholder="e.g. 5"></div>
+          </div>
+          <button class="calc-solve" id="circle-area-solve">Solve</button>
+          <div class="calc-output" id="circle-area-output">Result will appear here.</div>
+        </div>
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Parallelogram</h3>
+          <span class="calc-formula">A = b × h</span>
+          <div class="calc-fields">
+            <div class="field"><label for="parallelogram-area-b">Base</label><input type="number" id="parallelogram-area-b" step="any" placeholder="e.g. 9"></div>
+            <div class="field"><label for="parallelogram-area-h">Height</label><input type="number" id="parallelogram-area-h" step="any" placeholder="e.g. 4"></div>
+          </div>
+          <button class="calc-solve" id="parallelogram-area-solve">Solve</button>
+          <div class="calc-output" id="parallelogram-area-output">Result will appear here.</div>
+        </div>
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Trapezoid</h3>
+          <span class="calc-formula">A = ½ × (a + b) × h</span>
+          <div class="calc-fields">
+            <div class="field"><label for="trapezoid-area-a">Base A</label><input type="number" id="trapezoid-area-a" step="any" placeholder="e.g. 6"></div>
+            <div class="field"><label for="trapezoid-area-b">Base B</label><input type="number" id="trapezoid-area-b" step="any" placeholder="e.g. 10"></div>
+            <div class="field"><label for="trapezoid-area-h">Height</label><input type="number" id="trapezoid-area-h" step="any" placeholder="e.g. 5"></div>
+          </div>
+          <button class="calc-solve" id="trapezoid-area-solve">Solve</button>
+          <div class="calc-output" id="trapezoid-area-output">Result will appear here.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year"></span> Math Hub. Built with HTML, CSS &amp; JavaScript.</span>
+    <span>Published with GitHub Pages</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+    </html>
