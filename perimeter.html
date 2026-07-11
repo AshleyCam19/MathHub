@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perimeter Calculators — Math Hub</title>
+<meta name="description" content="Calculate perimeter for rectangles, squares, triangles, circles, and parallelograms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <svg class="logo-mark" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <circle cx="15" cy="15" r="11" stroke="#e7bd5c" stroke-width="2"/>
+        <line x1="15" y1="15" x2="24" y2="15" stroke="#5f9d90" stroke-width="2"/>
+        <circle cx="15" cy="15" r="2" fill="#f2efe6"/>
+      </svg>
+      <span>Math Hub<span class="logo-tagline">We Learn · We Solve · We Win</span></span>
+    </a>
+    <nav class="mainnav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="diameter.html">Diameter</a></li>
+        <li><a href="area.html">Area</a></li>
+        <li><a href="volume.html">Volume</a></li>
+        <li><a href="perimeter.html" aria-current="page">Perimeter</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="banner">
+    <div class="equation-ghost">P = 2(l+w)</div>
+    <div class="wrap banner-inner">
+      <span class="eyebrow">● Page 05</span>
+      <h1>Perimeter <span class="chalk-underline">Calculators
+        <svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2 8 C 50 14, 150 2, 198 9" stroke="#e7bd5c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span></h1>
+      <p class="lede">Measure the distance around a shape — five common shapes, ready to solve.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="calc-grid">
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Rectangle</h3>
+          <span class="calc-formula">P = 2(l + w)</span>
+          <div class="calc-fields">
+            <div class="field"><label for="rect-perimeter-l">Length</label><input type="number" id="rect-perimeter-l" step="any" placeholder="e.g. 8"></div>
+            <div class="field"><label for="rect-perimeter-w">Width</label><input type="number" id="rect-perimeter-w" step="any" placeholder="e.g. 4"></div>
+          </div>
+          <button class="calc-solve" id="rect-perimeter-solve">Solve</button>
+          <div class="calc-output" id="rect-perimeter-output">Result will appear here.</div>
+        </div>
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Square</h3>
+          <span class="calc-formula">P = 4s</span>
+          <div class="calc-fields">
+            <div class="field"><label for="square-perimeter-s">Side</label><input type="number" id="square-perimeter-s" step="any" placeholder="e.g. 6"></div>
+          </div>
+          <button class="calc-solve" id="square-perimeter-solve">Solve</button>
+          <div class="calc-output" id="square-perimeter-output">Result will appear here.</div>
+        </div>
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Triangle</h3>
+          <span class="calc-formula">P = a + b + c</span>
+          <div class="calc-fields">
+            <div class="field"><label for="triangle-perimeter-a">Side A</label><input type="number" id="triangle-perimeter-a" step="any" placeholder="e.g. 5"></div>
+            <div class="field"><label for="triangle-perimeter-b">Side B</label><input type="number" id="triangle-perimeter-b" step="any" placeholder="e.g. 6"></div>
+            <div class="field"><label for="triangle-perimeter-c">Side C</label><input type="number" id="triangle-perimeter-c" step="any" placeholder="e.g. 7"></div>
+          </div>
+          <button class="calc-solve" id="triangle-perimeter-solve">Solve</button>
+          <div class="calc-output" id="triangle-perimeter-output">Result will appear here.</div>
+        </div>
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Circle (Circumference)</h3>
+          <span class="calc-formula">C = 2πr</span>
+          <div class="calc-fields">
+            <div class="field"><label for="circle-perimeter-r">Radius</label><input type="number" id="circle-perimeter-r" step="any" placeholder="e.g. 5"></div>
+          </div>
+          <button class="calc-solve" id="circle-perimeter-solve">Solve</button>
+          <div class="calc-output" id="circle-perimeter-output">Result will appear here.</div>
+        </div>
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Parallelogram</h3>
+          <span class="calc-formula">P = 2(a + b)</span>
+          <div class="calc-fields">
+            <div class="field"><label for="parallelogram-perimeter-a">Side A</label><input type="number" id="parallelogram-perimeter-a" step="any" placeholder="e.g. 9"></div>
+            <div class="field"><label for="parallelogram-perimeter-b">Side B</label><input type="number" id="parallelogram-perimeter-b" step="any" placeholder="e.g. 5"></div>
+          </div>
+          <button class="calc-solve" id="parallelogram-perimeter-solve">Solve</button>
+          <div class="calc-output" id="parallelogram-perimeter-output">Result will appear here.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year"></span> Math Hub. Built with HTML, CSS &amp; JavaScript.</span>
+    <span>Published with GitHub Pages</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+        </html>
