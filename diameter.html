@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diameter, Radius &amp; Circumference — Math Hub</title>
+<meta name="description" content="Calculate diameter, radius, and circumference of a circle.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <svg class="logo-mark" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <circle cx="15" cy="15" r="11" stroke="#e7bd5c" stroke-width="2"/>
+        <line x1="15" y1="15" x2="24" y2="15" stroke="#5f9d90" stroke-width="2"/>
+        <circle cx="15" cy="15" r="2" fill="#f2efe6"/>
+      </svg>
+      <span>Math Hub<span class="logo-tagline">We Learn · We Solve · We Win</span></span>
+    </a>
+    <nav class="mainnav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="diameter.html" aria-current="page">Diameter</a></li>
+        <li><a href="area.html">Area</a></li>
+        <li><a href="volume.html">Volume</a></li>
+        <li><a href="perimeter.html">Perimeter</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="banner">
+    <div class="equation-ghost">d = 2r</div>
+    <div class="wrap banner-inner">
+      <span class="eyebrow">● Page 02</span>
+      <h1>Circle <span class="chalk-underline">Basics
+        <svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2 8 C 50 14, 150 2, 198 9" stroke="#e7bd5c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span></h1>
+      <p class="lede">Every circle problem starts here — find the diameter, radius, or circumference in one step.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="calc-grid">
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Diameter</h3>
+          <span class="calc-formula">d = 2r</span>
+          <div class="calc-fields">
+            <div class="field">
+              <label for="diameter-radius">Radius</label>
+              <input type="number" id="diameter-radius" step="any" placeholder="e.g. 5">
+            </div>
+          </div>
+          <button class="calc-solve" id="diameter-solve">Solve</button>
+          <div class="calc-output" id="diameter-output">Result will appear here.</div>
+        </div>
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Radius</h3>
+          <span class="calc-formula">r = d / 2</span>
+          <div class="calc-fields">
+            <div class="field">
+              <label for="radius-diameter">Diameter</label>
+              <input type="number" id="radius-diameter" step="any" placeholder="e.g. 10">
+            </div>
+          </div>
+          <button class="calc-solve" id="radius-solve">Solve</button>
+          <div class="calc-output" id="radius-output">Result will appear here.</div>
+        </div>
+
+        <div class="calc-card">
+          <h3><span class="pin"></span>Circumference</h3>
+          <span class="calc-formula">C = 2πr</span>
+          <div class="calc-fields">
+            <div class="field">
+              <label for="circumference-radius">Radius</label>
+              <input type="number" id="circumference-radius" step="any" placeholder="e.g. 5">
+            </div>
+          </div>
+          <button class="calc-solve" id="circumference-solve">Solve</button>
+          <div class="calc-output" id="circumference-output">Result will appear here.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year"></span> Math Hub. Built with HTML, CSS &amp; JavaScript.</span>
+    <span>Published with GitHub Pages</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+            </html>
