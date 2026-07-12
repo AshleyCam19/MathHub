@@ -1,5 +1,15 @@
+/* ===========================================================
+   A.C Numerics — script.js
+   One file, every page. Each function only runs if its
+   elements exist on the current page, so this is safe to
+   include everywhere.
+=========================================================== */
+
+// ---------- Helpers ----------
+
 function fmt(n) {
   if (!isFinite(n)) return "—";
+  // Round to 4 decimal places, then strip trailing zeros
   const rounded = Math.round((n + Number.EPSILON) * 10000) / 10000;
   return rounded.toString();
 }
@@ -17,6 +27,13 @@ function showOutput(outputId, text, isError) {
   el.innerHTML = text;
 }
 
+/**
+ * Wires up one calculator card.
+ * inputIds: array of input element ids, in the order `formula` expects them
+ * formula: function(...values) => number
+ * label: the name of the result, e.g. "Area"
+ * unit: optional unit suffix, e.g. "cm²"
+ */
 function bindCalc({ btnId, inputIds, outputId, formula, label, unit }) {
   const btn = document.getElementById(btnId);
   if (!btn) return;
@@ -52,6 +69,7 @@ function bindCalc({ btnId, inputIds, outputId, formula, label, unit }) {
   }
 
   btn.addEventListener("click", run);
+  // Allow Enter key inside any input to trigger solve
   inputIds.forEach((id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -67,34 +85,150 @@ function bindCalc({ btnId, inputIds, outputId, formula, label, unit }) {
 
 const PI = Math.PI;
 
-// Diameter page
-bindCalc({ btnId: "diameter-solve", inputIds: ["diameter-radius"], outputId: "diameter-output", formula: (r) => 2 * r, label: "Diameter" });
-bindCalc({ btnId: "radius-solve", inputIds: ["radius-diameter"], outputId: "radius-output", formula: (d) => d / 2, label: "Radius" });
-bindCalc({ btnId: "circumference-solve", inputIds: ["circumference-radius"], outputId: "circumference-output", formula: (r) => 2 * PI * r, label: "Circumference" });
+// ---------- Diameter page ----------
+bindCalc({
+  btnId: "diameter-solve",
+  inputIds: ["diameter-radius"],
+  outputId: "diameter-output",
+  formula: (r) => 2 * r,
+  label: "Diameter",
+});
+bindCalc({
+  btnId: "radius-solve",
+  inputIds: ["radius-diameter"],
+  outputId: "radius-output",
+  formula: (d) => d / 2,
+  label: "Radius",
+});
+bindCalc({
+  btnId: "circumference-solve",
+  inputIds: ["circumference-radius"],
+  outputId: "circumference-output",
+  formula: (r) => 2 * PI * r,
+  label: "Circumference",
+});
 
-// Area page
-bindCalc({ btnId: "rect-area-solve", inputIds: ["rect-area-l", "rect-area-w"], outputId: "rect-area-output", formula: (l, w) => l * w, label: "Area" });
-bindCalc({ btnId: "square-area-solve", inputIds: ["square-area-s"], outputId: "square-area-output", formula: (s) => s * s, label: "Area" });
-bindCalc({ btnId: "triangle-area-solve", inputIds: ["triangle-area-b", "triangle-area-h"], outputId: "triangle-area-output", formula: (b, h) => 0.5 * b * h, label: "Area" });
-bindCalc({ btnId: "circle-area-solve", inputIds: ["circle-area-r"], outputId: "circle-area-output", formula: (r) => PI * r * r, label: "Area" });
-bindCalc({ btnId: "parallelogram-area-solve", inputIds: ["parallelogram-area-b", "parallelogram-area-h"], outputId: "parallelogram-area-output", formula: (b, h) => b * h, label: "Area" });
-bindCalc({ btnId: "trapezoid-area-solve", inputIds: ["trapezoid-area-a", "trapezoid-area-b", "trapezoid-area-h"], outputId: "trapezoid-area-output", formula: (a, b, h) => 0.5 * (a + b) * h, label: "Area" });
+// ---------- Area page ----------
+bindCalc({
+  btnId: "rect-area-solve",
+  inputIds: ["rect-area-l", "rect-area-w"],
+  outputId: "rect-area-output",
+  formula: (l, w) => l * w,
+  label: "Area",
+});
+bindCalc({
+  btnId: "square-area-solve",
+  inputIds: ["square-area-s"],
+  outputId: "square-area-output",
+  formula: (s) => s * s,
+  label: "Area",
+});
+bindCalc({
+  btnId: "triangle-area-solve",
+  inputIds: ["triangle-area-b", "triangle-area-h"],
+  outputId: "triangle-area-output",
+  formula: (b, h) => 0.5 * b * h,
+  label: "Area",
+});
+bindCalc({
+  btnId: "circle-area-solve",
+  inputIds: ["circle-area-r"],
+  outputId: "circle-area-output",
+  formula: (r) => PI * r * r,
+  label: "Area",
+});
+bindCalc({
+  btnId: "parallelogram-area-solve",
+  inputIds: ["parallelogram-area-b", "parallelogram-area-h"],
+  outputId: "parallelogram-area-output",
+  formula: (b, h) => b * h,
+  label: "Area",
+});
+bindCalc({
+  btnId: "trapezoid-area-solve",
+  inputIds: ["trapezoid-area-a", "trapezoid-area-b", "trapezoid-area-h"],
+  outputId: "trapezoid-area-output",
+  formula: (a, b, h) => 0.5 * (a + b) * h,
+  label: "Area",
+});
 
-// Volume page
-bindCalc({ btnId: "cube-volume-solve", inputIds: ["cube-volume-s"], outputId: "cube-volume-output", formula: (s) => s ** 3, label: "Volume" });
-bindCalc({ btnId: "cylinder-volume-solve", inputIds: ["cylinder-volume-r", "cylinder-volume-h"], outputId: "cylinder-volume-output", formula: (r, h) => PI * r * r * h, label: "Volume" });
-bindCalc({ btnId: "cone-volume-solve", inputIds: ["cone-volume-r", "cone-volume-h"], outputId: "cone-volume-output", formula: (r, h) => (1 / 3) * PI * r * r * h, label: "Volume" });
-bindCalc({ btnId: "sphere-volume-solve", inputIds: ["sphere-volume-r"], outputId: "sphere-volume-output", formula: (r) => (4 / 3) * PI * r ** 3, label: "Volume" });
-bindCalc({ btnId: "prism-volume-solve", inputIds: ["prism-volume-l", "prism-volume-w", "prism-volume-h"], outputId: "prism-volume-output", formula: (l, w, h) => l * w * h, label: "Volume" });
+// ---------- Volume page ----------
+bindCalc({
+  btnId: "cube-volume-solve",
+  inputIds: ["cube-volume-s"],
+  outputId: "cube-volume-output",
+  formula: (s) => s ** 3,
+  label: "Volume",
+});
+bindCalc({
+  btnId: "cylinder-volume-solve",
+  inputIds: ["cylinder-volume-r", "cylinder-volume-h"],
+  outputId: "cylinder-volume-output",
+  formula: (r, h) => PI * r * r * h,
+  label: "Volume",
+});
+bindCalc({
+  btnId: "cone-volume-solve",
+  inputIds: ["cone-volume-r", "cone-volume-h"],
+  outputId: "cone-volume-output",
+  formula: (r, h) => (1 / 3) * PI * r * r * h,
+  label: "Volume",
+});
+bindCalc({
+  btnId: "sphere-volume-solve",
+  inputIds: ["sphere-volume-r"],
+  outputId: "sphere-volume-output",
+  formula: (r) => (4 / 3) * PI * r ** 3,
+  label: "Volume",
+});
+bindCalc({
+  btnId: "prism-volume-solve",
+  inputIds: ["prism-volume-l", "prism-volume-w", "prism-volume-h"],
+  outputId: "prism-volume-output",
+  formula: (l, w, h) => l * w * h,
+  label: "Volume",
+});
 
-// Perimeter page
-bindCalc({ btnId: "rect-perimeter-solve", inputIds: ["rect-perimeter-l", "rect-perimeter-w"], outputId: "rect-perimeter-output", formula: (l, w) => 2 * (l + w), label: "Perimeter" });
-bindCalc({ btnId: "square-perimeter-solve", inputIds: ["square-perimeter-s"], outputId: "square-perimeter-output", formula: (s) => 4 * s, label: "Perimeter" });
-bindCalc({ btnId: "triangle-perimeter-solve", inputIds: ["triangle-perimeter-a", "triangle-perimeter-b", "triangle-perimeter-c"], outputId: "triangle-perimeter-output", formula: (a, b, c) => a + b + c, label: "Perimeter" });
-bindCalc({ btnId: "circle-perimeter-solve", inputIds: ["circle-perimeter-r"], outputId: "circle-perimeter-output", formula: (r) => 2 * PI * r, label: "Circumference" });
-bindCalc({ btnId: "parallelogram-perimeter-solve", inputIds: ["parallelogram-perimeter-a", "parallelogram-perimeter-b"], outputId: "parallelogram-perimeter-output", formula: (a, b) => 2 * (a + b), label: "Perimeter" });
+// ---------- Perimeter page ----------
+bindCalc({
+  btnId: "rect-perimeter-solve",
+  inputIds: ["rect-perimeter-l", "rect-perimeter-w"],
+  outputId: "rect-perimeter-output",
+  formula: (l, w) => 2 * (l + w),
+  label: "Perimeter",
+});
+bindCalc({
+  btnId: "square-perimeter-solve",
+  inputIds: ["square-perimeter-s"],
+  outputId: "square-perimeter-output",
+  formula: (s) => 4 * s,
+  label: "Perimeter",
+});
+bindCalc({
+  btnId: "triangle-perimeter-solve",
+  inputIds: ["triangle-perimeter-a", "triangle-perimeter-b", "triangle-perimeter-c"],
+  outputId: "triangle-perimeter-output",
+  formula: (a, b, c) => a + b + c,
+  label: "Perimeter",
+});
+bindCalc({
+  btnId: "circle-perimeter-solve",
+  inputIds: ["circle-perimeter-r"],
+  outputId: "circle-perimeter-output",
+  formula: (r) => 2 * PI * r,
+  label: "Circumference",
+});
+bindCalc({
+  btnId: "parallelogram-perimeter-solve",
+  inputIds: ["parallelogram-perimeter-a", "parallelogram-perimeter-b"],
+  outputId: "parallelogram-perimeter-output",
+  formula: (a, b) => 2 * (a + b),
+  label: "Perimeter",
+});
 
+// ===========================================================
 // Scientific calculator (calculator.html)
+// ===========================================================
 (function scientificCalculator() {
   const displayEl = document.getElementById("sci-display");
   const exprEl = document.getElementById("sci-expr");
@@ -107,11 +241,13 @@ bindCalc({ btnId: "parallelogram-perimeter-solve", inputIds: ["parallelogram-per
     displayEl.textContent = expression === "" ? "0" : expression;
   }
 
+  // Only allow a safe subset of characters before evaluating.
   function safeEvaluate(expr) {
     const cleaned = expr.replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-");
     if (!/^[0-9+\-*/%.()\s]+$/.test(cleaned)) {
       throw new Error("Invalid characters");
     }
+    // eslint-disable-next-line no-new-func
     const result = Function(`"use strict"; return (${cleaned})`)();
     if (typeof result !== "number" || !isFinite(result)) {
       throw new Error("Invalid result");
@@ -201,7 +337,38 @@ bindCalc({ btnId: "parallelogram-perimeter-solve", inputIds: ["parallelogram-per
   render();
 })();
 
+// ---------- Mobile nav toggle (progressive enhancement) ----------
 document.addEventListener("DOMContentLoaded", () => {
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
+
+// ---------- Hamburger nav overlay (home page hero) ----------
+(function hamburgerNav() {
+  const btn = document.getElementById("hamburger-btn");
+  const overlay = document.getElementById("nav-overlay");
+  const closeBtn = document.getElementById("nav-overlay-close");
+  if (!btn || !overlay) return;
+
+  function openNav() {
+    overlay.classList.add("open");
+    overlay.setAttribute("aria-hidden", "false");
+    btn.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+  function closeNav() {
+    overlay.classList.remove("open");
+    overlay.setAttribute("aria-hidden", "true");
+    btn.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  btn.addEventListener("click", () => {
+    overlay.classList.contains("open") ? closeNav() : openNav();
+  });
+  closeBtn?.addEventListener("click", closeNav);
+  overlay.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.classList.contains("open")) closeNav();
+  });
+})();
