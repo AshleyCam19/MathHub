@@ -771,3 +771,88 @@ footer.site-footer a:hover { text-decoration: underline; }
   color: var(--chalk, #f2efe6);
   font-size: 0.72rem;
   letter
+   /* Full-screen nav overlay */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(5,5,5,0.97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s;
+}
+.nav-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-overlay ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.nav-overlay li {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.nav-overlay.open li {
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav-overlay.open li:nth-child(1) { transition-delay: 0.05s; }
+.nav-overlay.open li:nth-child(2) { transition-delay: 0.10s; }
+.nav-overlay.open li:nth-child(3) { transition-delay: 0.15s; }
+.nav-overlay.open li:nth-child(4) { transition-delay: 0.20s; }
+.nav-overlay.open li:nth-child(5) { transition-delay: 0.25s; }
+.nav-overlay.open li:nth-child(6) { transition-delay: 0.30s; }
+.nav-overlay.open li:nth-child(7) { transition-delay: 0.35s; }
+.nav-overlay a {
+  display: block;
+  padding: 14px 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-weight: 700;
+  text-decoration: none;
+  color: rgba(242,239,230,0.65);
+  transition: color 0.15s;
+}
+.nav-overlay a:hover,
+.nav-overlay a[aria-current="page"] { color: var(--yellow, #e7bd5c); }
+.nav-overlay-close {
+  position: absolute;
+  top: 26px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(242,239,230,0.3);
+  background: rgba(242,239,230,0.04);
+  color: #f2efe6;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow, .hero-title .shine, .scroll-cta, .symbol, .orbit-ring-1, .orbit-ring-2, .orbit-ring-3, .orbit-core-glow, .orbit-dot-a, .orbit-dot-b { animation: none !important; }
+}
+
+/* Compact hero used on the six inner pages */
+.hero-arena.compact {
+  min-height: auto;
+  padding: 100px 24px 56px;
+}
+.hero-arena.compact .hero-title {
+  font-size: clamp(2.4rem, 9vw, 4.6rem);
+  margin-bottom: 16px;
+}
+.hero-arena.compact .hero-desc.standalone {
+  max-width: 56ch;
+  margin: 0 auto;
+  text-align: center;
+   }
