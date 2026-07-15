@@ -1,25 +1,27 @@
 /* ===========================================================
    Math Hub — stylesheet
-   Theme: chalkboard + worksheet. Dark chalkboard for hero/nav
-   accents, warm paper for reading surfaces, mono type for
-   every number a user actually solves for.
+   Theme: Black Galaxy. Deep space background with stars and
+   nebula glow behind every page; gold/teal/pink accents read
+   like starlight. Vertical sidebar navigation on every page.
 =========================================================== */
 
 :root {
-  --board:        #1e2f28;
-  --board-deep:   #152420;
-  --chalk:        #f2efe6;
-  --chalk-dim:    #b7c3ba;
-  --paper:        #f7f4ec;
-  --paper-line:   #e8e2d2;
-  --ink:          #1d221d;
-  --ink-dim:      #5d665d;
-  --yellow:       #e7bd5c;
-  --teal:         #5f9d90;
-  --coral:        #d6836f;
+  --board:        #10102a;   /* header / banner / footer surface */
+  --board-deep:   #07060f;   /* deepest space surface */
+  --chalk:        #f3f1ff;   /* bright starlight text */
+  --chalk-dim:    #a9a4c9;   /* dim starlight text */
+  --paper:        #100e22;   /* card / input surface */
+  --paper-line:   rgba(255,255,255,0.10);
+  --ink:          #ece9ff;   /* body text */
+  --ink-dim:      #a29dc4;   /* secondary body text */
+  --yellow:       #e7bd5c;   /* gold star accent */
+  --teal:         #52e0cd;   /* nebula teal accent */
+  --coral:        #ef7fa8;   /* nebula pink accent */
+  --purple:       #8c6fe0;   /* nebula purple accent */
   --radius:       10px;
-  --shadow:       0 2px 0 rgba(29,34,29,0.08);
+  --shadow:       0 2px 14px rgba(0,0,0,0.45);
   --maxw:         1080px;
+  --sidebar-w:    236px;
 }
 
 * { box-sizing: border-box; }
@@ -28,11 +30,47 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--paper);
   color: var(--ink);
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.55;
+  background-color: var(--board-deep);
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ---------- Galaxy backdrop (stars + nebula glow) ---------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-color: var(--board-deep);
+  background-image:
+    radial-gradient(ellipse 60% 45% at 14% 18%, rgba(140,111,224,0.30), transparent 60%),
+    radial-gradient(ellipse 55% 40% at 88% 12%, rgba(82,224,205,0.20), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 78% 82%, rgba(239,127,168,0.20), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 8% 88%, rgba(231,189,92,0.14), transparent 60%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.7;
+  background-image:
+    radial-gradient(1.6px 1.6px at 20px 30px, #fff, transparent),
+    radial-gradient(1.2px 1.2px at 90px 80px, #fff, transparent),
+    radial-gradient(1.6px 1.6px at 150px 20px, rgba(255,255,255,0.85), transparent),
+    radial-gradient(1px 1px at 60px 140px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.4px 1.4px at 180px 110px, #fff, transparent),
+    radial-gradient(1px 1px at 120px 170px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.6px 1.6px at 10px 190px, rgba(255,255,255,0.8), transparent);
+  background-repeat: repeat;
+  background-size: 220px 220px;
 }
 
 h1, h2, h3, .logo, nav a, .btn {
@@ -59,9 +97,9 @@ img { max-width: 100%; display: block; }
   left: -999px;
   top: auto;
   background: var(--yellow);
-  color: var(--ink);
+  color: var(--board-deep);
   padding: 10px 16px;
-  z-index: 100;
+  z-index: 200;
 }
 .skip-link:focus { left: 12px; top: 12px; }
 
@@ -74,24 +112,28 @@ img { max-width: 100%; display: block; }
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 
-/* ---------- Nav ---------- */
+/* ---------- Nav (horizontal top bar, every page) ---------- */
 .site-header {
-  background: var(--board);
+  background: rgba(9,9,22,0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   color: var(--chalk);
   position: sticky;
   top: 0;
+  left: 0;
   z-index: 50;
-  border-bottom: 3px solid var(--yellow);
+  border-bottom: 1px solid rgba(231,189,92,0.22);
 }
 
 .site-header .wrap {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-top: 14px;
-  padding-bottom: 14px;
   flex-wrap: wrap;
   gap: 12px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
 .logo {
@@ -121,6 +163,7 @@ img { max-width: 100%; display: block; }
 nav.mainnav ul {
   list-style: none;
   display: flex;
+  flex-direction: row;
   gap: 4px;
   margin: 0;
   padding: 0;
@@ -133,22 +176,23 @@ nav.mainnav a {
   color: var(--chalk-dim);
   font-size: 0.95rem;
   font-weight: 500;
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 10px 14px;
+  border-radius: 8px;
   transition: background 0.15s, color 0.15s;
 }
 
 nav.mainnav a:hover { background: rgba(242,239,230,0.08); color: var(--chalk); }
 
 nav.mainnav a[aria-current="page"] {
-  color: var(--board);
+  color: var(--board-deep);
   background: var(--yellow);
   font-weight: 700;
+  box-shadow: 0 0 18px rgba(231,189,92,0.45);
 }
 
 /* ---------- Hero / banner ---------- */
 .banner {
-  background: var(--board-deep);
+  background: transparent;
   color: var(--chalk);
   position: relative;
   overflow: hidden;
@@ -160,7 +204,7 @@ nav.mainnav a[aria-current="page"] {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.07;
+  opacity: 0.08;
   background-image:
     linear-gradient(rgba(242,239,230,.6) 1px, transparent 1px),
     linear-gradient(90deg, rgba(242,239,230,.6) 1px, transparent 1px);
@@ -175,7 +219,7 @@ nav.mainnav a[aria-current="page"] {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 7.5rem;
   font-weight: 700;
-  color: rgba(242,239,230,0.05);
+  color: rgba(242,239,230,0.06);
   pointer-events: none;
   line-height: 1;
   white-space: nowrap;
@@ -198,6 +242,7 @@ nav.mainnav a[aria-current="page"] {
   font-size: clamp(2rem, 4.5vw, 3.1rem);
   margin: 0 0 14px;
   max-width: 16ch;
+  color: var(--chalk);
 }
 
 .chalk-underline {
@@ -230,7 +275,7 @@ nav.mainnav a[aria-current="page"] {
   border: none;
   cursor: pointer;
   font-size: 0.95rem;
-  box-shadow: var(--shadow);
+  box-shadow: 0 0 20px rgba(231,189,92,0.35);
   transition: transform 0.12s ease;
 }
 .btn:hover { transform: translateY(-1px); }
@@ -260,7 +305,7 @@ main { display: block; }
   margin-bottom: 8px;
   display: block;
 }
-.section-head h2 { font-size: 1.7rem; margin: 0 0 8px; }
+.section-head h2 { font-size: 1.7rem; margin: 0 0 8px; color: var(--chalk); }
 .section-head p { color: var(--ink-dim); margin: 0; }
 
 /* ---------- Cards (home page feature grid) ---------- */
@@ -270,17 +315,19 @@ main { display: block; }
   gap: 16px;
 }
 .feature-card {
-  background: #fff;
+  background: rgba(255,255,255,0.04);
   border: 1px solid var(--paper-line);
   border-radius: var(--radius);
   padding: 20px;
   text-decoration: none;
   color: var(--ink);
-  transition: transform 0.15s, box-shadow 0.15s;
+  backdrop-filter: blur(6px);
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
 }
 .feature-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(30,47,40,0.1);
+  box-shadow: 0 10px 30px rgba(140,111,224,0.25);
+  border-color: rgba(231,189,92,0.4);
 }
 .feature-card .num {
   font-family: 'IBM Plex Mono', monospace;
@@ -288,7 +335,7 @@ main { display: block; }
   font-size: 0.85rem;
   font-weight: 600;
 }
-.feature-card h3 { margin: 6px 0 6px; font-size: 1.1rem; }
+.feature-card h3 { margin: 6px 0 6px; font-size: 1.1rem; color: var(--chalk); }
 .feature-card p { margin: 0; color: var(--ink-dim); font-size: 0.92rem; }
 
 /* ---------- Calculator cards ---------- */
@@ -299,10 +346,11 @@ main { display: block; }
 }
 
 .calc-card {
-  background: #fff;
-  border: 1.5px dashed #c9c0a4;
+  background: rgba(255,255,255,0.035);
+  border: 1.5px dashed rgba(231,189,92,0.35);
   border-radius: var(--radius);
   padding: 20px 20px 22px;
+  backdrop-filter: blur(6px);
 }
 
 .calc-card h3 {
@@ -311,10 +359,12 @@ main { display: block; }
   display: flex;
   align-items: center;
   gap: 8px;
+  color: var(--chalk);
 }
 .calc-card h3 .pin {
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--coral); flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(239,127,168,0.8);
 }
 
 .calc-formula {
@@ -325,6 +375,7 @@ main { display: block; }
   border-radius: 6px;
   margin: 10px 0 14px;
   display: inline-block;
+  border: 1px solid rgba(231,189,92,0.2);
 }
 
 .calc-fields { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
@@ -341,14 +392,15 @@ main { display: block; }
   padding: 9px 10px;
   border: 1.5px solid var(--paper-line);
   border-radius: 6px;
-  background: var(--paper);
+  background: rgba(255,255,255,0.03);
   color: var(--ink);
 }
-.field input:focus { border-color: var(--teal); background: #fff; }
+.field input::placeholder { color: rgba(162,157,196,0.6); }
+.field input:focus { border-color: var(--teal); background: rgba(255,255,255,0.06); }
 
 .calc-solve {
   background: var(--teal);
-  color: #fff;
+  color: #061a17;
   border: none;
   padding: 9px 16px;
   border-radius: 6px;
@@ -357,30 +409,32 @@ main { display: block; }
   font-size: 0.9rem;
   width: 100%;
 }
-.calc-solve:hover { background: #517f74; }
+.calc-solve:hover { background: #3fc2b0; }
 
 .calc-output {
   margin-top: 12px;
-  background: var(--paper);
+  background: rgba(255,255,255,0.03);
   border: 1px solid var(--paper-line);
   border-radius: 6px;
   padding: 10px 12px;
   font-size: 0.95rem;
   min-height: 22px;
+  color: var(--ink-dim);
 }
-.calc-output .value { font-weight: 700; color: var(--board); }
+.calc-output .value { font-weight: 700; color: var(--yellow); }
 .calc-output.error .value { color: var(--coral); }
 
 /* ---------- Scientific calculator ---------- */
 .sci-calc {
   max-width: 360px;
   background: var(--board);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 16px;
   padding: 18px;
-  box-shadow: 0 12px 30px rgba(21,36,32,0.35);
+  box-shadow: 0 12px 34px rgba(0,0,0,0.55);
 }
 .display {
-  background: #10201b;
+  background: #07060f;
   color: var(--yellow);
   font-size: 1.8rem;
   text-align: right;
@@ -403,14 +457,14 @@ main { display: block; }
   padding: 14px 0;
   border-radius: 8px;
   border: none;
-  background: #2a3f36;
+  background: rgba(255,255,255,0.06);
   color: var(--chalk);
   cursor: pointer;
 }
-.keys button:hover { background: #354c42; }
-.keys button.op { background: #3c5148; color: var(--yellow); }
-.keys button.eq { background: var(--yellow); color: var(--board); font-weight: 700; grid-column: span 2; }
-.keys button.clear { background: var(--coral); color: #fff; }
+.keys button:hover { background: rgba(255,255,255,0.12); }
+.keys button.op { background: rgba(82,224,205,0.16); color: var(--teal); }
+.keys button.eq { background: var(--yellow); color: var(--board-deep); font-weight: 700; grid-column: span 2; }
+.keys button.clear { background: var(--coral); color: #2a0713; }
 
 /* ---------- About page ---------- */
 .about-grid {
@@ -435,10 +489,11 @@ main { display: block; }
   font-size: 0.8rem;
   text-align: center;
   padding: 16px;
+  border: 1px dashed rgba(231,189,92,0.35);
 }
 .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; padding: 0; list-style: none; }
 .tag-list li {
-  background: var(--paper);
+  background: rgba(255,255,255,0.04);
   border: 1px solid var(--paper-line);
   color: var(--ink-dim);
   font-size: 0.85rem;
@@ -453,15 +508,10 @@ main { display: block; }
   margin: 18px 0 0;
 }
 
-@media (max-width: 640px) {
-  .about-grid { grid-template-columns: 1fr; }
-  .about-photo { max-width: 200px; }
-  .banner .equation-ghost { display: none; }
-}
-
 /* ---------- Footer ---------- */
 footer.site-footer {
-  background: var(--board-deep);
+  background: transparent;
+  border-top: 1px solid var(--paper-line);
   color: var(--chalk-dim);
   padding: 28px 0;
   font-size: 0.88rem;
@@ -474,3 +524,10 @@ footer.site-footer .wrap {
 }
 footer.site-footer a { color: var(--chalk); text-decoration: none; }
 footer.site-footer a:hover { text-decoration: underline; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { max-width: 200px; }
+  .banner .equation-ghost { display: none; }
+}
