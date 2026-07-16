@@ -3,50 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Area Calculators — Math Hub</title>
+<title>Area Calculators — A.C Numerics</title>
 <meta name="description" content="Calculate area for rectangles, squares, triangles, circles, parallelograms, and trapezoids.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
-<body>
+<body class="theme-coral">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="wrap">
-    <a class="logo" href="index.html">
-      <svg class="logo-mark" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-        <circle cx="15" cy="15" r="11" stroke="#e7bd5c" stroke-width="2"/>
-        <line x1="15" y1="15" x2="24" y2="15" stroke="#5f9d90" stroke-width="2"/>
-        <circle cx="15" cy="15" r="2" fill="#f2efe6"/>
-      </svg>
-      <span>Math Hub<span class="logo-tagline">We Learn · We Solve · We Win</span></span>
-    </a>
-    <nav class="mainnav" aria-label="Main navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="calculator.html">Calculator</a></li>
-        <li><a href="diameter.html">Diameter</a></li>
-        <li><a href="area.html" aria-current="page">Area</a></li>
-        <li><a href="volume.html">Volume</a></li>
-        <li><a href="perimeter.html">Perimeter</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<nav class="nav-overlay" id="nav-overlay" aria-label="Main navigation" aria-hidden="true">
+  <button class="nav-overlay-close" id="nav-overlay-close" aria-label="Close menu">✕</button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="calculator.html">Calculator</a></li>
+    <li><a href="diameter.html">Diameter</a></li>
+    <li><a href="area.html" aria-current="page">Area</a></li>
+    <li><a href="volume.html">Volume</a></li>
+    <li><a href="perimeter.html">Perimeter</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
 
 <main id="main">
-  <section class="banner">
-    <div class="equation-ghost">A = l × w</div>
-    <div class="wrap banner-inner">
-      <span class="eyebrow">● Page 03</span>
-      <h1>Area <span class="chalk-underline">Calculators
-        <svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M2 8 C 50 14, 150 2, 198 9" stroke="#e7bd5c" stroke-width="3" fill="none" stroke-linecap="round"/>
-        </svg>
-      </span></h1>
-      <p class="lede">Six shapes, six formulas. Enter your measurements and Math Hub does the arithmetic.</p>
+  <section class="hero-arena compact">
+    <div class="hero-glow"></div>
+    <div class="hero-grain"></div>
+    <div class="symbol-field" aria-hidden="true">
+      <span class="symbol s1">△</span>
+      <span class="symbol s3">▢</span>
+      <span class="symbol s5">○</span>
+      <span class="symbol s7">▱</span>
+      <span class="symbol s9">A</span>
+      <span class="symbol s11">π</span>
+    </div>
+    <span class="corner corner-tl"></span>
+    <span class="corner corner-tr"></span>
+    <span class="corner corner-bl"></span>
+    <span class="corner corner-br"></span>
+    <div class="hero-topbar">
+      <button class="icon-btn" aria-hidden="true">●</button>
+      <button class="hamburger-btn" id="hamburger-btn" aria-controls="nav-overlay" aria-expanded="false" aria-label="Open menu">
+        <span></span>
+      </button>
+    </div>
+    <div class="hero-center">
+      <div class="hero-rule">
+        <span></span>
+        <p class="hero-kicker">Page 03</p>
+        <span></span>
+      </div>
+      <h1 class="hero-title"><span class="shine">Area</span></h1>
+      <p class="hero-desc standalone">Six shapes, six formulas. Enter your measurements and A.C Numerics does the arithmetic.</p>
     </div>
   </section>
 
@@ -126,11 +134,11 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>© <span id="year"></span> Math Hub. Built with HTML, CSS &amp; JavaScript.</span>
+    <span>© <span id="year"></span> A.C Numerics. Built with HTML, CSS &amp; JavaScript.</span>
     <span>Published with GitHub Pages</span>
   </div>
 </footer>
 
 <script src="script.js"></script>
 </body>
-</html>
+        </html>
